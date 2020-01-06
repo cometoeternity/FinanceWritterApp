@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceWritterApp.BL", "FinanceWritterApp.BL\FinanceWritterApp.BL.csproj", "{B6A942A6-D01D-4C89-8954-56AE40177C62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceWritterApp.CMD", "FinanceWritterApp.CMD\FinanceWritterApp.CMD.csproj", "{7CF4677D-33CD-478C-9505-A7A63B8E41C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6A942A6-D01D-4C89-8954-56AE40177C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A942A6-D01D-4C89-8954-56AE40177C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A942A6-D01D-4C89-8954-56AE40177C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A942A6-D01D-4C89-8954-56AE40177C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CF4677D-33CD-478C-9505-A7A63B8E41C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF4677D-33CD-478C-9505-A7A63B8E41C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF4677D-33CD-478C-9505-A7A63B8E41C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF4677D-33CD-478C-9505-A7A63B8E41C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19853809-52F5-43F4-8FFE-7CCB2CA1212F}
+	EndGlobalSection
+EndGlobal

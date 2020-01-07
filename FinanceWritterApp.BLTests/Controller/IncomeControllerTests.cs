@@ -20,7 +20,7 @@ namespace FinanceWritterApp.BL.Controller.Tests
             var rnd = new Random();
             var userController = new UserController(userName);
             var incomeController = new IncomeController(userController.CurrentUser);
-            var cost = new IncomeList(incomeName, 0, userController.CurrentUser);
+            var cost = new IncomeList(incomeName,rnd.Next(100,500));
             incomeController.Add(cost, rnd.Next(100, 500));
             Assert.AreEqual(cost.Name, incomeController.Incomes.First().Name);
         }

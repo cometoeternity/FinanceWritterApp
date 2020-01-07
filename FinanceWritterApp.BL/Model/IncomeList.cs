@@ -37,7 +37,7 @@ namespace FinanceWritterApp.BL.Model
             {
                 throw new ArgumentOutOfRangeException("Неправильное число в записи расходов!", nameof(amount));
             }
-            Moment = DateTime.UtcNow;
+            Moment = DateTime.Now;
             Name = name;
             Amount = amount;
         }

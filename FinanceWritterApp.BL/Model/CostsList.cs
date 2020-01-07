@@ -17,7 +17,7 @@ namespace FinanceWritterApp.BL.Model
         /// <summary>
         /// Сумма расхода.
         /// </summary>
-        public double Amount { get; set; } = 0;
+        public double Amount { get; set; }
 
         /// <summary>
         /// Время добавление расхода.
@@ -40,8 +40,9 @@ namespace FinanceWritterApp.BL.Model
             {
                 throw new ArgumentOutOfRangeException("Неправильное число в записи расходов!", nameof(amount));
             }
-            Moment = DateTime.UtcNow;
-            Name = name;;
+            Moment = DateTime.Now;
+            Amount = amount;
+            Name = name;
         }
 
         public override string ToString()

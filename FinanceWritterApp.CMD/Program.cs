@@ -33,11 +33,16 @@ namespace FinanceWritterApp.CMD
                 Console.WriteLine("A - Ввод доходов.");
                 Console.WriteLine("Q - Выйти и закрыть.");
                 var key = Console.ReadKey();
+                Console.WriteLine();
                 switch (key.Key)
                 {
                     case ConsoleKey.E:
                         var costs = EnterCosts();
                         costsController.Add(costs.Cost,costs.Amount);
+                        foreach(var item in costsController.Costs)
+                        {
+                            Console.WriteLine(item.Name +" "+item.Amount);
+                        }
                         break;
                     case ConsoleKey.A:
                         var income = EnterIncomes();

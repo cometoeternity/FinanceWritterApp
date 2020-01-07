@@ -32,7 +32,7 @@ namespace FinanceWritterApp.BL.Model
             }
             UserName = userName;
             Gender = gender;
-            registrationTime = DateTime.UtcNow;
+            registrationTime = DateTime.Now;
         }
         public override string ToString()
         {

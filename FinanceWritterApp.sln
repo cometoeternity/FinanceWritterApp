@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceWritterApp.BL", "Fin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceWritterApp.CMD", "FinanceWritterApp.CMD\FinanceWritterApp.CMD.csproj", "{7CF4677D-33CD-478C-9505-A7A63B8E41C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceWritterApp.BLTests", "FinanceWritterApp.BLTests\FinanceWritterApp.BLTests.csproj", "{4AF8E11A-D97B-454A-A5CB-2FE3B51DBFD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7CF4677D-33CD-478C-9505-A7A63B8E41C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF4677D-33CD-478C-9505-A7A63B8E41C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CF4677D-33CD-478C-9505-A7A63B8E41C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AF8E11A-D97B-454A-A5CB-2FE3B51DBFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AF8E11A-D97B-454A-A5CB-2FE3B51DBFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AF8E11A-D97B-454A-A5CB-2FE3B51DBFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AF8E11A-D97B-454A-A5CB-2FE3B51DBFD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

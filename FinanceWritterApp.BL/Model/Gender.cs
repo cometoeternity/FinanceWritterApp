@@ -13,6 +13,7 @@ namespace FinanceWritterApp.BL.Model
         /// Имя нового пола.
         /// </summary>
         public string Name { get; set; }
+        public Gender() { }
 
         /// <summary>
         /// Добавление нового пола.

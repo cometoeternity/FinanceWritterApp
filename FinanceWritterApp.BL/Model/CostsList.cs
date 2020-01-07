@@ -10,51 +10,53 @@ namespace FinanceWritterApp.BL.Model
     public class CostsList
     {
         /// <summary>
+        /// Имя расхода.
+        /// </summary>
+        public string Name  { get; set; }
+
+        /// <summary>
+        /// Сумма расхода.
+        /// </summary>
+        public double Amount { get; set; } = 0;
+
+        /// <summary>
         /// Время добавление расхода.
         /// </summary>
         public DateTime Moment { get; set; }
-
-        /// <summary>
-        /// Словарь расходов с суммой расхода.
-        /// </summary>
-        public Dictionary<CostType,double> Costs  { get; set; }
 
         /// <summary>
         /// Пользователь приложения.
         /// </summary>
         public User User { get; set; }
 
+        public CostsList() { }
+
         /// <summary>
         /// Создание списка расходов.
         /// </summary>
         /// <param name="user">Пользователь приложения.</param>
-        public CostsList(User user)
+        public CostsList(string name,double amount,User user)
         {
             if(user==null)
             {
                 throw new ArgumentNullException("Пользователь не может быть пустым!", nameof(user));
             }
+            if(string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Название расхода не может быть пустым!", nameof(name));
+            }
+            if(amount<0)
+            {
+                throw new ArgumentOutOfRangeException("Неправильное число в записи расходов!", nameof(amount));
+            }
             Moment = DateTime.UtcNow;
+            Name = name;
             User = user;
-            Costs = new Dictionary<CostType, double>();
         }
 
-        /// <summary>
-        /// Добавление нового вида расхода в лист расходов с суммой/если есть уже такой расход, добавление суммы расхода.
-        /// </summary>
-        /// <param name="costType">Вид расхода.</param>
-        /// <param name="amount">Сумма расхода.</param>
-        public void Add(CostType costType,double amount)
+        public override string ToString()
         {
-            var expenses = Costs.Keys.FirstOrDefault(c => c.Name.Equals(costType.Name));
-            if(expenses==null)
-            {
-                Costs.Add(costType, amount);
-            }
-            else
-            {
-                Costs[expenses] += amount;
-            }
+            return $"Название расхода - {Name}, Сумма расхода - {Amount}";
         }
     }
 }

@@ -13,8 +13,7 @@ namespace FinanceWritterApp.BL.Controller
     {
         
         private readonly User user;
-        public List<CostType> Costs { get; }
-        public CostsList CostsList { get; }
+        public List<CostsList> Costs { get; }
 
         public CostsController(User user)
         {
@@ -24,40 +23,26 @@ namespace FinanceWritterApp.BL.Controller
             }
             this.user = user;
             Costs = GetAllCosts();
-            CostsList = GetCosts();
         }
-        private List<CostType> GetAllCosts()
+        private List<CostsList> GetAllCosts()
         {
-            return Load<CostType>() ?? new List<CostType>();
-        }
-
-        private CostsList GetCosts()
-        {
-            return Load<CostsList>().FirstOrDefault() ?? new CostsList(user);
+            return Load<CostsList>() ?? new List<CostsList>();
         }
 
-        public void Add(CostType costType,double amount)
+        public void Add(CostsList cost, double amount)
         {
-            var costs = Costs.SingleOrDefault(c => c.Name == costType.Name);
+            var costs = Costs.SingleOrDefault(c => c.Name == cost.Name);
             if(costs==null)
             {
-                Costs.Add(costType);
+                var costList = new CostsList(cost.Name,amount, user);
+                Costs.Add(costList);
             }
-            CostsList.Add(costType, amount);
+            else
+            {
+                var costList = new CostsList(cost.Name,costs.Amount+=amount, user);
+                Costs.Add(costList);
+            }
             Save(Costs);
-            Save(new List<CostsList>() { CostsList });
         }
-
-        public void AllAmount()
-        {
-
-        }
-
-        public void AllAmountByDate(DateTime dateTime)
-        {
-
-        }
-
     }
-   
 }

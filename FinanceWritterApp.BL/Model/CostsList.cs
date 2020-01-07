@@ -24,23 +24,14 @@ namespace FinanceWritterApp.BL.Model
         /// </summary>
         public DateTime Moment { get; set; }
 
-        /// <summary>
-        /// Пользователь приложения.
-        /// </summary>
-        public User User { get; set; }
-
         public CostsList() { }
 
         /// <summary>
         /// Создание списка расходов.
         /// </summary>
         /// <param name="user">Пользователь приложения.</param>
-        public CostsList(string name,double amount,User user)
+        public CostsList(string name,double amount)
         {
-            if(user==null)
-            {
-                throw new ArgumentNullException("Пользователь не может быть пустым!", nameof(user));
-            }
             if(string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("Название расхода не может быть пустым!", nameof(name));
@@ -50,8 +41,7 @@ namespace FinanceWritterApp.BL.Model
                 throw new ArgumentOutOfRangeException("Неправильное число в записи расходов!", nameof(amount));
             }
             Moment = DateTime.UtcNow;
-            Name = name;
-            User = user;
+            Name = name;;
         }
 
         public override string ToString()

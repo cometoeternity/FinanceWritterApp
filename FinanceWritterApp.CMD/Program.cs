@@ -26,28 +26,60 @@ namespace FinanceWritterApp.CMD
             }
             Console.WriteLine(userController.CurrentUser);
 
-            //while (true)
-            //{
-            //    Console.WriteLine("Выберите следующее действие: ");
-            //    Console.WriteLine("E - Ввод расходов.");
-            //    Console.WriteLine("A - Ввод доходов.");
-            //    Console.WriteLine("Q - Выйти и закрыть.");
-            //    var key = Console.ReadKey();
-            //    switch (key.Key)
-            //    {
-            //        case ConsoleKey.E:
-            //            var costs = EnterCosts();
-            //            costsController.Add(costs.);
-            //            break;
-            //        case ConsoleKey.A:
-            //            var income = EnterIncomes();
-            //            incomeController.Add();
-            //            break;
-            //        case ConsoleKey.Q:
-            //            Environment.Exit(0);
-            //            break;
-            //    }
-            //}
+            while (true)
+            {
+                Console.WriteLine("Выберите следующее действие: ");
+                Console.WriteLine("E - Ввод расходов.");
+                Console.WriteLine("A - Ввод доходов.");
+                Console.WriteLine("Q - Выйти и закрыть.");
+                var key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.E:
+                        var costs = EnterCosts();
+                        costsController.Add(costs.Cost,costs.Amount);
+                        break;
+                    case ConsoleKey.A:
+                        var income = EnterIncomes();
+                        incomeController.Add(income.Income,income.Amount);
+                        break;
+                    case ConsoleKey.Q:
+                        Environment.Exit(0);
+                        break;
+                }
+            }
+        }
+
+        private static (CostsList Cost, double Amount) EnterCosts()
+        {
+            Console.WriteLine("Введите название расхода: ");
+            var name = Console.ReadLine();
+            var amount = ParseDouble("Сумма расхода: ");
+            var cost = new CostsList(name, amount);
+            return (Cost: cost, Amount: amount);
+        }
+        private static (IncomeList Income,double Amount) EnterIncomes()
+        {
+            Console.WriteLine("Введите название дохода: ");
+            var name = Console.ReadLine();
+            var amount = ParseDouble("Сумма расхода: ");
+            var income = new IncomeList(name, amount);
+            return (Income: income, Amount: amount);
+        }
+        private static double ParseDouble(string name)
+        {
+            while(true)
+            {
+                Console.WriteLine($"{name} ");
+                if(double.TryParse(Console.ReadLine(),out double value))
+                {
+                    return value;
+                }
+                else
+                {
+                    Console.WriteLine($"Не верный формат {name}");
+                }
+            }
         }
     }
 }

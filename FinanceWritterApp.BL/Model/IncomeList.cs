@@ -24,20 +24,11 @@ namespace FinanceWritterApp.BL.Model
         public DateTime Moment { get; set; }
 
         /// <summary>
-        /// Пользователь приложения.
-        /// </summary>
-        public User User { get; set; }
-
-        /// <summary>
         /// Конструктор для записи доходов.
         /// </summary>
         /// <param name="user"></param>
-        public IncomeList(string name, double amount, User user)
+        public IncomeList(string name, double amount)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("Пользователь не может быть пустым!", nameof(user));
-            }
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("Название расхода не может быть пустым!", nameof(name));
@@ -46,11 +37,11 @@ namespace FinanceWritterApp.BL.Model
             {
                 throw new ArgumentOutOfRangeException("Неправильное число в записи расходов!", nameof(amount));
             }
-                Moment = DateTime.UtcNow;
-                Name = name;
-                Amount = amount;
-                User = user;
+            Moment = DateTime.UtcNow;
+            Name = name;
+            Amount = amount;
         }
+                
         public override string ToString()
         {
             return $"Название дохода - {Name}, Сумма расхода - {Amount}";

@@ -34,12 +34,12 @@ namespace FinanceWritterApp.BL.Controller
             var costs = Costs.SingleOrDefault(c => c.Name == cost.Name);
             if(costs==null)
             {
-                var costList = new CostsList(cost.Name,amount, user);
+                var costList = new CostsList(cost.Name,amount);
                 Costs.Add(costList);
             }
             else
             {
-                var costList = new CostsList(cost.Name,costs.Amount+=amount, user);
+                var costList = new CostsList(cost.Name,costs.Amount+=amount);
                 Costs.Add(costList);
             }
             Save(Costs);

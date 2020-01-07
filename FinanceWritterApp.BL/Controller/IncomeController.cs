@@ -30,12 +30,12 @@ namespace FinanceWritterApp.BL.Controller
             var income = Incomes.SingleOrDefault(c => c.Name == incomeType.Name);
             if (income == null)
             {
-                var incomeList = new IncomeList(incomeType.Name, amount, user);
+                var incomeList = new IncomeList(incomeType.Name, amount);
                 Incomes.Add(incomeList);
             }
             else
             {
-                var incomeList = new IncomeList(incomeType.Name, income.Amount += amount, user);
+                var incomeList = new IncomeList(incomeType.Name, income.Amount += amount);
                 Incomes.Add(incomeList);
             }
             Save(Incomes);

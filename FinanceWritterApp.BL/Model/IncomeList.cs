@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace FinanceWritterApp.BL.Model
 {
     [Serializable]
-   public class IncomeList
-   {
-        public Dictionary<Income,double> Incomes { get; set; }
+    public class IncomeList
+    {
+        public Dictionary<Income, double> Incomes { get; set; }
         /// <summary>
         /// Время записи дохода.
         /// </summary>
@@ -40,7 +40,7 @@ namespace FinanceWritterApp.BL.Model
             var cost = Incomes.Keys.FirstOrDefault(c => c.Name.Equals(incomeName));
             if (cost == null)
             {
-                Incomes.Add(cost, amount);
+                Incomes.Add(incomeName, amount);
             }
             else
             {
@@ -53,3 +53,4 @@ namespace FinanceWritterApp.BL.Model
             return $"Название расхода - {Incomes.Keys}, Сумма расхода - {Incomes.Values}";
         }
     }
+}

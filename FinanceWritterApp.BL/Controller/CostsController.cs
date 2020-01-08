@@ -42,12 +42,8 @@ namespace FinanceWritterApp.BL.Controller
             if(costs==null)
             {
                 Costs.Add(cost);
-                CostsList.Add(cost, amount);
             }
-            else
-            {
-                CostsList.Add(cost, amount);
-            }
+            CostsList.Add(cost, amount);
             Save(Costs);
             Save(new List<CostsList>() { CostsList});
         }

@@ -39,14 +39,18 @@ namespace FinanceWritterApp.CMD
                     case ConsoleKey.E:
                         var costs = EnterCosts();
                         costsController.Add(costs.Cost,costs.Amount);
-                        foreach(var item in costsController.Costs)
+                        foreach(var item in costsController.CostsList.Costs)
                         {
-                            Console.WriteLine(item.Name +" "+item.Amount);
+                            Console.WriteLine(item.Key +" "+item.Value);
                         }
                         break;
                     case ConsoleKey.A:
                         var income = EnterIncomes();
                         incomeController.Add(income.Income,income.Amount);
+                        foreach(var item in incomeController.IncomeList.Incomes)
+                        {
+                            Console.WriteLine(item.Key+" "+item.Value);
+                        }
                         break;
                     case ConsoleKey.Q:
                         Environment.Exit(0);
@@ -55,20 +59,20 @@ namespace FinanceWritterApp.CMD
             }
         }
 
-        private static (CostsList Cost, double Amount) EnterCosts()
+        private static (Cost Cost, double Amount) EnterCosts()
         {
             Console.WriteLine("Введите название расхода: ");
             var name = Console.ReadLine();
             var amount = ParseDouble("Сумма расхода: ");
-            var cost = new CostsList(name, amount);
+            var cost = new Cost(name);
             return (Cost: cost, Amount: amount);
         }
-        private static (IncomeList Income,double Amount) EnterIncomes()
+        private static (Income Income,double Amount) EnterIncomes()
         {
             Console.WriteLine("Введите название дохода: ");
             var name = Console.ReadLine();
             var amount = ParseDouble("Сумма расхода: ");
-            var income = new IncomeList(name, amount);
+            var income = new Income(name);
             return (Income: income, Amount: amount);
         }
         private static double ParseDouble(string name)

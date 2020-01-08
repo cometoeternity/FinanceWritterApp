@@ -26,4 +26,4 @@ namespace FinanceWritterApp.BL.Model
         }
     }
 }
-}
+

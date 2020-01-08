@@ -38,7 +38,7 @@ namespace FinanceWritterApp.BL.Model
             var cost = Costs.Keys.FirstOrDefault(c => c.Name.Equals(costName));
             if(cost==null)
             {
-                Costs.Add(cost, amount);
+                Costs.Add(costName, amount);
             }
             else
             {

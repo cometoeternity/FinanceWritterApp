@@ -40,12 +40,8 @@ namespace FinanceWritterApp.BL.Controller
             if (costs == null)
             {
                 Incomes.Add(income);
-                IncomeList.Add(income, amount);
             }
-            else
-            {
-                IncomeList.Add(income, amount);
-            }
+            IncomeList.Add(income, amount);
             Save(Incomes);
             Save(new List<IncomeList>() { IncomeList });
         }

@@ -45,8 +45,10 @@
     <Compile Include="Controller\CostsController.cs" />
     <Compile Include="Controller\IncomeController.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Model\Cost.cs" />
     <Compile Include="Model\CostsList.cs" />
     <Compile Include="Model\Gender.cs" />
+    <Compile Include="Model\Income.cs" />
     <Compile Include="Model\IncomeList.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

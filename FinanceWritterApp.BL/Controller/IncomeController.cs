@@ -9,9 +9,12 @@ namespace FinanceWritterApp.BL.Controller
 {
     public class IncomeController:ControllerBase
     {
-        
+
         private readonly User user;
-        public List<IncomeList> Incomes { get; }
+        public List<Income> Incomes { get; }
+        public IncomeList IncomeList { get; }
+
+
         public IncomeController(User user)
         {
             if (user == null)
@@ -20,25 +23,31 @@ namespace FinanceWritterApp.BL.Controller
             }
             this.user = user;
             Incomes = GetAllIncomes();
+            IncomeList = GetIncomeList();
         }
-        private List<IncomeList> GetAllIncomes()
+        private List<Income> GetAllIncomes()
         {
-            return Load<IncomeList>() ?? new List<IncomeList>();
+            return Load<Income>() ?? new List<Income>();
         }
-        public void Add(IncomeList incomeType, double amount)
+        private IncomeList GetIncomeList()
         {
-            var income = Incomes.SingleOrDefault(c => c.Name == incomeType.Name);
-            if (income == null)
+            return Load<IncomeList>().FirstOrDefault() ?? new IncomeList(user);
+        }
+
+        public void Add(Income income, double amount)
+        {
+            var costs = Incomes.SingleOrDefault(c => c.Name == income.Name);
+            if (costs == null)
             {
-                var incomeList = new IncomeList(incomeType.Name, amount);
-                Incomes.Add(incomeList);
+                Incomes.Add(income);
+                IncomeList.Add(income, amount);
             }
             else
             {
-                var incomeList = new IncomeList(incomeType.Name, income.Amount += amount);
-                Incomes.Add(incomeList);
+                IncomeList.Add(income, amount);
             }
             Save(Incomes);
+            Save(new List<IncomeList>() { IncomeList });
         }
 
     }

@@ -9,20 +9,13 @@ namespace FinanceWritterApp.BL.Model
     [Serializable]
     public class CostsList
     {
-        /// <summary>
-        /// Имя расхода.
-        /// </summary>
-        public string Name  { get; set; }
-
-        /// <summary>
-        /// Сумма расхода.
-        /// </summary>
-        public double Amount { get; set; }
+        public Dictionary<Cost,double> Costs { get; set; }
 
         /// <summary>
         /// Время добавление расхода.
         /// </summary>
         public DateTime Moment { get; set; }
+        public User User { get; set; }
 
         public CostsList() { }
 
@@ -30,24 +23,32 @@ namespace FinanceWritterApp.BL.Model
         /// Создание списка расходов.
         /// </summary>
         /// <param name="user">Пользователь приложения.</param>
-        public CostsList(string name,double amount)
+        public CostsList(User user)
         {
-            if(string.IsNullOrWhiteSpace(name))
+            if(user==null)
             {
-                throw new ArgumentNullException("Название расхода не может быть пустым!", nameof(name));
-            }
-            if(amount<0)
-            {
-                throw new ArgumentOutOfRangeException("Неправильное число в записи расходов!", nameof(amount));
+                throw new ArgumentNullException("Имя пользователя не может быть пустым!", nameof(user));
             }
             Moment = DateTime.Now;
-            Amount = amount;
-            Name = name;
+            Costs = new Dictionary<Cost, double>();
+        }
+
+        public void Add(Cost costName,double amount)
+        {
+            var cost = Costs.Keys.FirstOrDefault(c => c.Name.Equals(costName));
+            if(cost==null)
+            {
+                Costs.Add(cost, amount);
+            }
+            else
+            {
+                Costs[cost] += amount;
+            }
         }
 
         public override string ToString()
         {
-            return $"Название расхода - {Name}, Сумма расхода - {Amount}";
+            return $"Название расхода - {Costs.Keys}, Сумма расхода - {Costs.Values}";
         }
     }
 }

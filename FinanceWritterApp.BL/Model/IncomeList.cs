@@ -9,15 +9,7 @@ namespace FinanceWritterApp.BL.Model
     [Serializable]
    public class IncomeList
    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public double Amount { get; set; }
+        public Dictionary<Income,double> Incomes { get; set; }
         /// <summary>
         /// Время записи дохода.
         /// </summary>
@@ -27,24 +19,37 @@ namespace FinanceWritterApp.BL.Model
         /// Конструктор для записи доходов.
         /// </summary>
         /// <param name="user"></param>
-        public IncomeList(string name, double amount)
+        public IncomeList() { }
+
+        /// <summary>
+        /// Создание списка расходов.
+        /// </summary>
+        /// <param name="user">Пользователь приложения.</param>
+        public IncomeList(User user)
         {
-            if (string.IsNullOrWhiteSpace(name))
+            if (user == null)
             {
-                throw new ArgumentNullException("Название расхода не может быть пустым!", nameof(name));
-            }
-            if (amount < 0)
-            {
-                throw new ArgumentOutOfRangeException("Неправильное число в записи расходов!", nameof(amount));
+                throw new ArgumentNullException("Имя пользователя не может быть пустым!", nameof(user));
             }
             Moment = DateTime.Now;
-            Name = name;
-            Amount = amount;
+            Incomes = new Dictionary<Income, double>();
         }
-                
+
+        public void Add(Income incomeName, double amount)
+        {
+            var cost = Incomes.Keys.FirstOrDefault(c => c.Name.Equals(incomeName));
+            if (cost == null)
+            {
+                Incomes.Add(cost, amount);
+            }
+            else
+            {
+                Incomes[cost] += amount;
+            }
+        }
+
         public override string ToString()
         {
-            return $"Название дохода - {Name}, Сумма расхода - {Amount}";
+            return $"Название расхода - {Incomes.Keys}, Сумма расхода - {Incomes.Values}";
         }
     }
-}

@@ -50,7 +50,7 @@ namespace FinanceWritterApp.BL.Model
 
         public override string ToString()
         {
-            return $"Название расхода - {Incomes.Keys}, Сумма расхода - {Incomes.Values}";
+            return $"Название расхода - {Incomes.Keys}, Сумма расхода - {Incomes.Values} рублей.";
         }
     }
 }
